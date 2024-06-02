@@ -13,8 +13,8 @@
 			"**/.DS_Store": true,
 			"**/Thumbs.db": true,
 			"**/**.html": true,
-			"HumaroidCommonInterface/contents/**.html": true,
-			"HumaroidCommonInterface/contents/**.pdf": true
+			"docs/**.html": true,
+			"docs/**.pdf": true
 		},
 		"cSpell.words": [
 			"Humaroid",
@@ -25,6 +25,7 @@
 			"endwbs"
 		],
 		"markdown.extension.print.onFileSave": false,
+		"markdown.extension.print.absoluteImgPath": false,
 		"markdown-preview-enhanced.imageFolderPath": "${workspaceFolder}/assets"
 	},
 	"extensions": {
