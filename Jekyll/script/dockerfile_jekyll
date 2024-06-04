@@ -1,0 +1,30 @@
+# https://hub.docker.com/_/node/tags
+#FROM node:latest
+FROM node:lts-bullseye-slim
+LABEL maintainer="Akari<masiro.to.akari@gmail.com>"
+SHELL ["/bin/bash", "-c"]
+
+##=============================================================
+ARG SERVER_PORT=4000
+
+##=============================================================
+RUN apt update -q
+RUN apt install -y sudo
+RUN apt install -y procps iputils-ping net-tools dnsutils
+RUN apt install -y vim
+
+##=============================================================
+RUN apt install -y ruby-full build-essential zlib1g-dev
+ENV GEM_HOME $HOME/gems
+ENV PATH $HOME/gems/bin:$PATH
+RUN gem install jekyll bundler minima
+
+##=============================================================
+RUN sed -i -e "s/#alias l/alias l/g" /root/.bashrc
+RUN sed -i -e "s/# alias l/alias l/g" /root/.bashrc
+
+##=============================================================
+WORKDIR /root/jekyll
+
+##=============================================================
+EXPOSE ${SERVER_PORT}
