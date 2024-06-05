@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "python debug : setup",
+            "name": "python debug : build",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/test/setup.py",
+            "program": "${workspaceFolder}/test/build.py",
             "console": "integratedTerminal",
             "args": []
         },
