@@ -12,5 +12,33 @@
             "console": "integratedTerminal",
             "args": []
         },
+        {
+            "name": "python debug : server : setup",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test/server.py",
+            "console": "integratedTerminal",
+            "args": []
+        },
+        {
+            "name": "python debug : server : remake container",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test/server.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--remake_container_only"
+            ]
+        },
+        {
+            "name": "python debug : server : build_only",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/test/server.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--build_only"
+            ]
+        }
     ]
 }

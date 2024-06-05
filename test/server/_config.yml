@@ -1,13 +1,14 @@
 # https://jekyllrb.com/docs/configuration/
-# bundle exec jekyll serve --no-watch
-# bundle exec jekyll serve --no-watch --source /root/docs --config /root/docs/_config.yml
+# bundle exec jekyll serve --config /root/jekyll/_config.yml --host 172.17.0.2
 
-source: /root/docs
+source: /root/src
 destination: /root/_site
 exclude: ["Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"]
 keep_files: [".git", ".svn"]
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+host: localhost
+
 #
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
@@ -15,17 +16,14 @@ markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Docker / github-pages
+title: 仕様書
 email: masiro.to.akari@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-#baseurl: "/Specification"
 baseurl: ""
-#url: "https://humanoidcommonnorms.github.io"
-url: "https://local_pages"
-#twitter_username: jekyllrb
+url: "https://humanoidcommonnorms.github.io"
 github_username:  HumanoidCommonNorms
 
 # Build settings

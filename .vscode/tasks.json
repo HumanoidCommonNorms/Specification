@@ -26,10 +26,32 @@
             "args": []
         },
         {
+            "label": "server : [00] setup",
+            "type": "shell",
+            "command": "${workspaceFolder}/test/server.py",
+            "args": []
+        },
+        {
+            "label": "server : [01] remake container",
+            "type": "shell",
+            "command": "${workspaceFolder}/test/server.py",
+            "args": [
+                "--remake_container_only"
+            ]
+        },
+        {
+            "label": "server : [02] build",
+            "type": "shell",
+            "command": "${workspaceFolder}/test/server.py",
+            "args": [
+                "--build_only"
+            ]
+        },
+        {
             "label": "container_start",
             "type": "shell",
             "windows": {
-                "command": "${workspaceFolder}/test/script/win/container_start.cmd"
+                "command": "${workspaceFolder}/test/__backup2/script/win/container_start.cmd"
             },
             "linux": {
                 "command": "echo Not implemented"
