@@ -73,9 +73,12 @@ iOSInjectionProject/
 **/.jekyll-cache
 **/.jekyll-metadata
 **/vendor
+**/.build
 
 ## My project
 **/~$*
 **/__*
 .vscode/VC.DB
 .vscode/pinned-files.json
+docs/gemfile
+

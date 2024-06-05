@@ -17,12 +17,14 @@
 			"docs/**.pdf": true
 		},
 		"cSpell.words": [
+			"autocrlf",
+			"enduml",
+			"endwbs",
 			"Humaroid",
 			"samplerate",
 			"startuml",
 			"startwbs",
-			"enduml",
-			"endwbs"
+			"workdir"
 		],
 		"forbeslindesay-taskrunner.source": "Workspace",
 		"markdown.extension.print.onFileSave": false,
@@ -38,5 +40,9 @@
 			"yzhang.markdown-all-in-one",
 			"shd101wyy.markdown-preview-enhanced"
 		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": []
 	}
 }
