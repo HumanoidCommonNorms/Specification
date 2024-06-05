@@ -30,14 +30,13 @@ parser.add_argument("--image_name", type=str, default="humanoid_common_norms_spe
                     help="Docker image name")
 parser.add_argument("--image_version", type=str, default="0.0.1",
                     help="Docker image version")
-parser.add_argument("--container_name", type=str, default="jekyll_server",
+parser.add_argument("--container_name", type=str, default="build_jekyll",
                     help="Docker container name")
 parser.add_argument("--dockerfile_name", type=str, default="Dockerfile",
                     help="Dockerfile name")
 parser.add_argument("--gemfile_path", type=str, default="test/.build/Gemfile",
                     help="Gemfile path")
 
-parser.add_argument("--port", type=int, default=4000, help="publish port")
 parser.add_argument("--src", type=str, default="docs", help="Build directory")
 parser.add_argument("--root_dir", type=str,
                     default=os.path.abspath(os.path.join(
@@ -108,11 +107,11 @@ class SetupGithubPages:
         # =========================================================
         if ret == 0:
             ret = self.create_docker_container(ap.image_name, ap.image_version, ap.container_name,
-                                               ap.port, self._src, self._volume_site, self._gemfile_path)
+                                               self._src, self._volume_site, self._gemfile_path)
 
         # =========================================================
-        self.print_container_list()
-        self.print_docker_logs(ap.container_name)
+        # self.print_container_list()
+        # self.print_docker_logs(ap.container_name)
         # =========================================================
 
     def download_jekyll_build_pages(self, download_dir: str,
@@ -212,7 +211,7 @@ class SetupGithubPages:
         return ret
 
     def create_docker_container(self, image_name: str, image_version: str,
-                                container_name: str, open_port: int,
+                                container_name: str,
                                 src: str, volume_site: str, gemfile_path: str):
         """Create Docker Container."""
         ret = 0
@@ -221,7 +220,7 @@ class SetupGithubPages:
             ['docker', 'run', '-dit',
              '--name', container_name,
              '--hostname', container_name,
-             '--publish', "127.0.0.1:" + str(open_port) + ":4000",
+             '--rm',
              '-v', gemfile_path + ":/root/src/Gemfile",
              '-v', src + ":/root/src",
              '-v', volume_site + ":/root/_site",
@@ -254,7 +253,7 @@ class SetupGithubPages:
         """Print Docker Container"""
         print("[## Container list] ")
         ret, result = self.get_process(
-            ['docker', 'ps', '-a', '--format', '"{{.Names}}\tState[{{.Status}}]\tProt:{{.Ports}}"'])
+            ['docker', 'ps', '-a', '--format', '"{{.Names}} : {{.Status}}"'])
         if ret == 0:
             print("--------------------------------------------------")
             print(result)
