@@ -26,7 +26,7 @@
             "args": []
         },
         {
-            "label": "server : [00] setup",
+            "label": "server : [00] remake image",
             "type": "shell",
             "command": "${workspaceFolder}/test/server.py",
             "args": []
@@ -40,18 +40,18 @@
             ]
         },
         {
-            "label": "server : [02] build",
+            "label": "server : [02] reboot",
             "type": "shell",
             "command": "${workspaceFolder}/test/server.py",
             "args": [
-                "--build_only"
+                "--reboot"
             ]
         },
         {
             "label": "container_start",
             "type": "shell",
             "windows": {
-                "command": "${workspaceFolder}/test/__backup2/script/win/container_start.cmd"
+                "command": "${workspaceFolder}/test/script/win/container_start.cmd"
             },
             "linux": {
                 "command": "echo Not implemented"

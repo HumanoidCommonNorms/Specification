@@ -31,13 +31,13 @@
             ]
         },
         {
-            "name": "python debug : server : build_only",
+            "name": "python debug : server : reboot",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/test/server.py",
             "console": "integratedTerminal",
             "args": [
-                "--build_only"
+                "--reboot"
             ]
         }
     ]
