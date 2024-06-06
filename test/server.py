@@ -40,16 +40,16 @@ parser.add_argument("--root_dir", type=str,
                     default=os.path.abspath(os.path.join(
                         os.path.dirname(__file__), "./..")),
                     help="Root directory")
-parser.add_argument("--dockerfile_path", type=str, default="test/server/Dockerfile",
+parser.add_argument("--dockerfile_path", type=str, default="test/src/Dockerfile",
                     help="Dockerfile path")
-parser.add_argument("--server_env_dir", type=str, default="test/server/node",
+parser.add_argument("--server_env_dir", type=str, default="test/src/node",
                     help="Server setting directory")
-parser.add_argument("--entrypoint_path", type=str, default="test/server/jekyll/entrypoint.sh",
+parser.add_argument("--entrypoint_path", type=str, default="test/src/jekyll/entrypoint.sh",
                     help="Entrypoint path")
-parser.add_argument("--gemfile_dir", type=str, default="test/server/jekyll",
+parser.add_argument("--gemfile_dir", type=str, default="test/src/jekyll",
                     help="Gemfile directory")
 # options : Control tools
-parser.add_argument("--reboot", action='store_true',
+parser.add_argument("--setup", action='store_true',
                     help="Restart the container")
 parser.add_argument("--remake_container_only", action='store_true',
                     help="Remake from container")
@@ -60,8 +60,8 @@ class SetupGithubPages:
     _root_dir = "."
     _src = "docs"
     _output_dir = "_site"
-    _dockerfile_path = "test/server/Dockerfile"
-    _server_env_dir = "test/server/node"
+    _dockerfile_path = "test/src/Dockerfile"
+    _server_env_dir = "test/src/node"
     _remake_container_only = False
 
     def __init__(self, ap):
@@ -82,16 +82,15 @@ class SetupGithubPages:
             os.path.join(ap.root_dir, ap.entrypoint_path))
         self._remake_container_only = ap.remake_container_only
 
-        if ap.reboot is False:
+        if ap.setup is True:
             # =========================================================
             # If there are any containers using the image, delete them.
             ret = self.remove_container(ap.image_name, ap.image_version)
 
             # =========================================================
             # If there is an image with the same name, delete it.
-            if self._remake_container_only is False:
-                if ret == 0:
-                    ret = self.remove_image(ap.image_name, ap.image_version)
+            if self._remake_container_only is False and ret == 0:
+                ret = self.remove_image(ap.image_name, ap.image_version)
             if ret == 0:
                 ret = self.build_docker_image(self._root_dir, self._gemfile_dir,
                                               self._dockerfile_path,

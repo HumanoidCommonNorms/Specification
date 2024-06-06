@@ -7,8 +7,6 @@
 title: 人型ロボット共通インターフェイス
 description: >-
  人型ロボット共通インターフェイス構想では、人型ロボットに関する知見を共有し開発を促進することを目的としています。
-baseurl: "/Specification"
-url: "https://humanoidcommonnorms.github.io"
 github_username:  HumanoidCommonNorms
 
 # Build settings
